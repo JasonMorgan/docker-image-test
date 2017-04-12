@@ -1,1 +1,9 @@
 FROM ubuntu
+RUN apt-get update
+RUN Apt-get install openssh-server
+RUN mkdir /var/run/sshd
+RUN apt-get install openjdk-6-jdk
+RUN useradd --create-home --shell /bin/bash jenkins
+RUN RUN echo 'jenkins:jenkins' | chpasswd
+RUN /usr/sbin/sshd
+EXPOSE 22
