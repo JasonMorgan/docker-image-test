@@ -8,20 +8,16 @@ jobs:
     trigger: true
   - put: docker-image
     params:
-      build: git-concourse-build-docker-image/ci
+      build: Dockerfile
 
 resources:
 - name: git-concourse-build-docker-image
   type: git
   source:
-    uri: git repo uri
+    uri: https://github.com/JasonMorgan/docker-image-test.git
     branch: master
-    private_key: {{github-private-key}}
 
 - name: docker-image
   type: docker-image
   source:
-    email: {{docker-hub-email}}
-    username: {{docker-hub-username}}
-    password: {{docker-hub-password}}
-    repository: {{docker-create-concourse-go-image}}
+    repository: 192.168.100.1:5000/concourseci
