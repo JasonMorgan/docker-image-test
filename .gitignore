@@ -1,1 +1,2 @@
 .vagrant/*
+concourse/variables.yml
